@@ -72,8 +72,8 @@ def calDefaultRecomm(request):
         else:
             break
 
-    recom_tuple.sort(key = sortAverating(), reverse = True)
-    for i in range(0,len_index_date):
+    recom_tuple.sort(key = sortAverating, reverse = True)
+    for i in range(0,int(min(len(recom_tuple), lim_len_date))):
         title_list.append(recom_tuple[i][0])
 
 
@@ -97,6 +97,19 @@ def calDefaultRecomm(request):
         defaultrecom.movie = MovieInfo.objects.get(moviename=mvname)
         defaultrecom.save()
 
+    default_recommend_movies = DefaultRecom.objects.all()
+    user_recommend_movies = default_recommend_movies
+    movie_list = []
+    for movie in user_recommend_movies:
+        movie_list.append(movie)
+    paginator = Paginator(movie_list, 24)
+    page = request.GET.get('page')
+    movies = paginator.get_page(page)
+
+
+    return render(request, 'movie_display.html', {
+        "commend_movie": movies
+    })
 
 class Cinema_Pages_view(View):
     def get(self, request):
@@ -116,3 +129,5 @@ class Cinema_Pages_view(View):
 def reCal_spark(request):
     pass
 
+def movie_type(request, type):
+    pass

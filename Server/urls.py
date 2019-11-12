@@ -27,7 +27,7 @@ from django.contrib import admin
 from django.urls import path
 from django.urls import re_path
 from django.conf.urls import url
-from Cinema_Pages.views import Cinema_Pages_view, index, reCal_spark
+from Cinema_Pages.views import Cinema_Pages_view, index, reCal_spark, movie_type, calDefaultRecomm
 from user.views import LoginView, LogoutView,RegisterView
 from movie.views import ContentView, AddReview
 
@@ -42,7 +42,9 @@ urlpatterns = [
     path('register/', RegisterView.as_view(), name="register",),
     path('movieinfo/<int:movie_id>', ContentView.as_view(), name='movieinfo'),
     path('add_comment/', AddReview.as_view(), name='add_review'),
-    path('index.html/~', reCal_spark, name='reCal_spark')
+    path('index.html/~', reCal_spark, name='reCal_spark'),
+    path('movie_display.html/~', calDefaultRecomm, name='reCal_coldstart'),
+    re_path(r'^movie/type/(?P<type>[\w]+)/', movie_type, name='movie_type'),
 ]
 #
 #     #weisg

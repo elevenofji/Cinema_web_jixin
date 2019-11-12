@@ -4,7 +4,7 @@ import datetime
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 
-from user.models import UserProfile #未处理
+from user.models import UserProfile
 # 电影的存储未考虑切分演员，导演等等
 # # 电影类型表，貌似没用
 # class MovieCategory(models.Model):

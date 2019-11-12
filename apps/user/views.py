@@ -24,7 +24,7 @@ class CustomBackend(ModelBackend):
 
 class LoginView(View):
     def get(self, request):
-        return render(request, 'movie_display.html', {})
+        return render(request, 'login.html', {})
 
     def post(self, request):
         login_form = LoginForm(request.POST)
@@ -54,7 +54,7 @@ class LogoutView(View):
 class RegisterView(View):
     def get(self,request):
         register_form = RegisterForm()
-        return render(request,"movie_display.html",{'register_form':register_form})
+        return render(request,"register.html",{'register_form':register_form})
 
     def post(self,request):
         register_form = RegisterForm(request.POST)
@@ -66,6 +66,8 @@ class RegisterView(View):
                 user = None
             if user != None:
                 return render(request, 'duplicat.html', {"msg": "用户名已存在，注册失败"})
+            if request.POST.get("password","") == request.POST.get("confirm password",""):
+                return render(request, 'err.html', {"msg": "密码不符合，请重新注册"})
             pass_word = request.POST.get("password","")
             Email = request.POST.get("email","")
             user_profile = UserProfile()

@@ -57,7 +57,7 @@ class AddReview(View):
             return HttpResponse('{"status":"fail",",msg":"用户未登陆"}', content_type='application/json')
         movie_id = request.POST.get("movie_id", '0')
         comments = request.POST.get("comments", "")
-        star = request.POST.get("star", '0')
+        star = request.POST.get("star", '1')
 
         if int(movie_id) > int(0) and comments:
             movie_comments = Review()
@@ -65,12 +65,13 @@ class AddReview(View):
             movie_comments.movie = movie
             movie_comments.content = comments
             movie_comments.user = request.user
-            movie_comments.star = star
+            movie_comments.star = int(star)
             # movie_comments.user_id = 1
             # movie_comments.movie_id = 2
             # movie_comments.content = 'hello'
             # movie_comments.star = 3.0
             movie_comments.save()
+            #需要修改
             return HttpResponse('{"status":"success",",msg":"添加成功"}', content_type='application/json')
         else:
             return HttpResponse('{"status":"fail",",msg":"请重新评论"}', content_type='application/json')

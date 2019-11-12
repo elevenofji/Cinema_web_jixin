@@ -1,6 +1,6 @@
 import xadmin
 
-from movie.models import MovieInfo, MovieSimilar
+from movie.models import MovieInfo, MovieSimilar,Review
 
 
 class MovieInfoAdmin(object):
@@ -25,7 +25,15 @@ class MovieSimilarAdmin(object):
     ordering = ['id', 'item1', 'item2', 'similar']
 
 
+class ReviewAdmin(object):
+    list_display = ['id', 'user', 'movie', 'content', 'star', 'reviewtime']
+    search_fields = ['id', 'user', 'movie', 'content', 'star']
+    list_filter = ['id', 'user', 'movie', 'content', 'star', 'reviewtime']
+    list_editable = ['user', 'movie', 'content', 'star']
+    ordering = ['id', 'user', 'movie', 'content', 'star', 'reviewtime']
+
+
 xadmin.site.register(MovieInfo, MovieInfoAdmin)
-#xadmin.site.register(MovieCategory, MovieCategoryAdmin)
+xadmin.site.register(Review, ReviewAdmin)
 xadmin.site.register(MovieSimilar, MovieSimilarAdmin)
 
