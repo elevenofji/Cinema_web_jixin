@@ -72,6 +72,6 @@ class AddReview(View):
             # movie_comments.star = 3.0
             movie_comments.save()
             #需要修改
-            return HttpResponse('{"status":"success",",msg":"添加成功"}', content_type='application/json')
+            return render(request, 'review_ok.html',{"msg": "注册成功，请登录"})
         else:
-            return HttpResponse('{"status":"fail",",msg":"请重新评论"}', content_type='application/json')
+            return render(request, 'review_fail.html', {"msg": "评论失败"})

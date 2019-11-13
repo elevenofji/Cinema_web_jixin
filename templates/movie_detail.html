@@ -211,8 +211,7 @@
                         <h3 class="detail-page-title"><span class="label label-primary">添加影评</span></h3>
                     </div>
                     <div class="col-sm-12" style="margin-left:20px;margin-top:5px">
-
-
+                        {% if request.user.is_authenticated %}
                         <form action="{% url 'add_review'%}" method="post" class="comment-form" role="form">
                             <input type='hidden' name='movie_id' value="{{ movie.id }}" />
 
@@ -246,6 +245,9 @@
                                 </div>
                             </div>
                         </form>
+                        {% else %}
+                             <p class="text-left" style="font-size: 27px" >请先登录！</p>
+                        {% endif %}
                     </div>
                 </div>
                 <!--添加影评 END-->
