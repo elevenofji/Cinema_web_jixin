@@ -65,7 +65,7 @@ class AddReview(View):
             movie_comments.movie = movie
             movie_comments.content = comments
             movie_comments.user = request.user
-            movie_comments.star = int(star)
+            movie_comments.star = float(star)
             # movie_comments.user_id = 1
             # movie_comments.movie_id = 2
             # movie_comments.content = 'hello'

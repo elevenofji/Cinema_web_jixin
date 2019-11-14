@@ -27,9 +27,11 @@ from django.contrib import admin
 from django.urls import path
 from django.urls import re_path
 from django.conf.urls import url
-from Cinema_Pages.views import Cinema_Pages_view, index, reCal_spark, movie_type, calDefaultRecomm
+from Cinema_Pages.views import Cinema_Pages_view, index, reCal_spark, movie_type, calDefaultRecom
 from user.views import LoginView, LogoutView,RegisterView
 from movie.views import ContentView, AddReview
+from search.views import movie_search
+
 
 urlpatterns = [
     # path('xadmin/', xadmin.site.urls),
@@ -43,8 +45,9 @@ urlpatterns = [
     path('movieinfo/<int:movie_id>', ContentView.as_view(), name='movieinfo'),
     path('add_comment/', AddReview.as_view(), name='add_review'),
     path('index.html/~', reCal_spark, name='reCal_spark'),
-    path('movie_display.html/~', calDefaultRecomm, name='reCal_coldstart'),
+    path('movie_display.html/~', calDefaultRecom, name='reCal_coldstart'),
     re_path(r'^movie/type/(?P<type>[\w]+)/', movie_type, name='movie_type'),
+    re_path(r'^movie/search/', movie_search, name='movie_search')
 ]
 #
 #     #weisg

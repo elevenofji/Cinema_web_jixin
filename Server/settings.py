@@ -51,9 +51,9 @@ INSTALLED_APPS = [
     'Cinema_Pages',
     'user',
     'movie',
-    # 'search',
+    'search',
     'xadmin',
-    'crispy_forms', #这里虽然引用了但是还没有使用这个来修改页面
+    'crispy_forms',
     'reversion'
 
 ]
@@ -96,7 +96,7 @@ WSGI_APPLICATION = 'Server.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'cinema',
+        'NAME': 'cinema',# 后续需要改
         'USER': 'root',  #数据库登录用户名
         'PASSWORD': 'xt032341',  #数据库登录密码
         'HOST': 'localhost',  #数据库所在主机

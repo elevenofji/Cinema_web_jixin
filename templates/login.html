@@ -73,7 +73,7 @@
                 {% endif %}
                 <div class="collapse navbar-collapse navbar-1 special-dropdown-nav">
                     <!--未修改-->
-                    <form action="{% url 'add_review' %}" method="post" class="navbar-form pull-right"
+                    <form action="{% url 'movie_search' %}" method="post" class="navbar-form pull-right"
                           role="search">
                         {% csrf_token %}
                         <input type="text" name="q" class="form-control" placeholder="Search">

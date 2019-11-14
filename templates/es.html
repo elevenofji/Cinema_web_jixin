@@ -128,11 +128,11 @@
                 <!--end left-->
 
                 <!--right-->
-{#                <!--{{commend_movie|length}}-->#}
+{#                <!--{{search_movie|length}}-->#}
                 <div class="col-md-12">
                     <div class="row">
-                        {% if commend_movie %}
-                        {% for movie in commend_movie %}
+                        {% if search_movie %}
+                        {% for movie in search_movie %}
                         <div class="col-sm-3 col-xs-4 text-center">
                             <a href="{% url 'movieinfo' movie.movie.id%}" data-gallery-id="gallery-1">
                                 <img src="{% if 34  %}{{movie.movie.picture}}{% endif %}" alt="图片无法显示"
@@ -164,25 +164,25 @@
                     </div>
 
                     <!--pagination-->
-{#                    <!--{{commend_movie|length}}-->#}
+{#                    <!--{{search_movie|length}}-->#}
                     <div class="row">
                         <div class="col-sm-12 text-center page-num-location">
                             <div class="pagination">
                             <span class="step-links">
-                            {% if commend_movie.has_previous %}
+                            {% if search_movie.has_previous %}
                             <a href="?page=1"><span class="label label-primary">&laquo; 首页</span></a>
-                            <a href="?page={{ commend_movie.previous_page_number }}"><span
+                            <a href="?page={{ search_movie.previous_page_number }}"><span
                                     class="label label-success">上一页</span></a>
                             {% endif %}
 
                             <span class="current" style="color:#080808;font-size:12px;">
-                            第 {{ commend_movie.number }} 页，共 {{ commend_movie.paginator.num_pages }} 页
+                            第 {{ search_movie.number }} 页，共 {{ search_movie.paginator.num_pages }} 页
                             </span>
 
-                            {% if commend_movie.has_next %}
-                                <a href="?page={{ commend_movie.next_page_number }}"><span
+                            {% if search_movie.has_next %}
+                                <a href="?page={{ search_movie.next_page_number }}"><span
                                         class="label label-success">下一页</span></a>
-                                <a href="?page={{ commend_movie.paginator.num_pages }}"><span class="label label-warning">尾页 &raquo;</span></a>
+                                <a href="?page={{ search_movie.paginator.num_pages }}"><span class="label label-warning">尾页 &raquo;</span></a>
                             {% endif %}
                             </span>
                             </div>
